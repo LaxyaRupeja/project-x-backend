@@ -9,11 +9,19 @@ router.get("/", async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
     try {
-
-        const users = await User.find({ name: { $regex: name, $options: "i" } }).skip((page - 1) * limit)
+        // Find matching users based on the name and pagination parameters
+        const usersQuery = User.find({ name: { $regex: name, $options: "i" } })
+            .skip((page - 1) * limit)
             .limit(limit);
 
-        res.json({ users });
+        // Execute the query to get the users
+        const users = await usersQuery.exec();
+
+        // Get the total count of documents without pagination
+        const totalCount = await User.countDocuments({ name: { $regex: name, $options: "i" } });
+
+        // Return the users and the total count
+        res.json({ users, totalCount });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
