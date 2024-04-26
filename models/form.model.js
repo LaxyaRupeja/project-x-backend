@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const questionSchema = new mongoose.Schema({
-  index: { type: Number, required: true},
+  // index: { type: Number, required: true}, //just for test not actually needed
   ans_type: {
     type: String,
     required: true,
