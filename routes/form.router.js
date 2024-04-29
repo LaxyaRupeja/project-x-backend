@@ -42,7 +42,6 @@ formRouter.get("/:id", async (req, res) => {
 })
 
 formRouter.post("/", async (req, res) => {
-    console.log(req.body);
     try {
         const newForm = await Form.create(req.body)
         res.status(201).json(newForm);
