@@ -28,6 +28,7 @@ const questionSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  files: [String]
 });
 
 const formSchema = new mongoose.Schema(
