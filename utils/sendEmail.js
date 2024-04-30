@@ -4,7 +4,7 @@ dotenv.config();
 
 async function sendEmail(recipient, subject, message) {
     try {
-      // Define email options
+      // Define email option
       let mailOptions = {
         from: process.env.NODEMAILER_USER,
         to: recipient,
