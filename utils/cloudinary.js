@@ -21,6 +21,7 @@ export const cloudUpload = async (filePath, originalName) => {
       folder: "projext-x",
       public_id: originalName,
       original_filename: originalName,
+      resource_type: "auto"
     })
     console.log("File successfully uploaded.", response.url)
     fs.unlinkSync(filePath)
