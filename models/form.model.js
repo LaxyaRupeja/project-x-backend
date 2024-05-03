@@ -5,7 +5,7 @@ const questionSchema = new mongoose.Schema({
   ans_type: {
     type: String,
     required: true,
-    enum: ["mcq", "dropdown", "checkbox", "short_ans", "long_ans"],
+    enum: ["mcq", "dropdown", "checkbox", "short_ans", "long_ans", "signature", "datetime"],
   },
   correct_ans: { type: String },
   optionsArray: {
