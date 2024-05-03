@@ -61,6 +61,6 @@ const formSchema = new mongoose.Schema(
   }
 );
 
-const SubmittedForm = mongoose.model("Form", formSchema);
+const SubmittedForm = mongoose.model("submittedForm", formSchema);
 
 export default SubmittedForm;

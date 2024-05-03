@@ -1,5 +1,5 @@
 import express from "express";
-import SubmittedForm from "../models/submittedForm.model";
+import SubmittedForm from "../models/submittedForm.model.js";
 
 const submittedFormRouter = express.Router();
 
