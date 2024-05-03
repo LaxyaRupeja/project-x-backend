@@ -3,6 +3,7 @@ import connectDB from "./config/connect.js";
 import cors from "cors";
 import router from "./routes/user.route.js";
 import formRouter from "./routes/form.router.js";
+import submittedFormRouter from "./routes/submittedForm.router.js";
 import fileRouter from "./routes/file.router.js";
 
 const PORT = 8080;
@@ -15,6 +16,7 @@ app.use(cors())
 
 app.use("/user", router);
 app.use("/forms", formRouter);
+app.use("/submittedForms", submittedFormRouter);
 app.use("/files", fileRouter);
 
 app.listen(8080, () => {
