@@ -1,13 +1,12 @@
 import mongoose from "mongoose";
 
 const questionSchema = new mongoose.Schema({
-  // index: { type: Number, required: true}, //just for test not actually needed
   ans_type: {
     type: String,
     required: true,
-    enum: ["mcq", "dropdown", "checkbox", "short_ans", "long_ans", "signature", "datetime"],
+    enum: ["mcq", "dropdown", "checkbox", "short_ans", "long_ans"],
   },
-  correct_ans: { type: String },
+  ans: { type: String },
   optionsArray: {
     type: [String],
     validate: {
@@ -62,6 +61,6 @@ const formSchema = new mongoose.Schema(
   }
 );
 
-const Form = mongoose.model("Form", formSchema);
+const SubmittedForm = mongoose.model("submittedForm", formSchema);
 
-export default Form;
+export default SubmittedForm;
