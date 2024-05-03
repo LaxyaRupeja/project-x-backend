@@ -49,14 +49,20 @@ router.post("/", async (req, res) => {
 router.patch("/editUser/:id", async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
-        user.role = req.body.role;
-        user.password = req.body.newPassword
+        
+        if (req.body.role) {
+            user.role = req.body.role;
+        }
+        
+        if (req.body.newPassword) {
+            user.password = req.body.newPassword;
+        }
         const updatedUser = await user.save();
         res.json(updatedUser);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
-})
+});
 
 router.post("/login", async (req, res) => {
     const { email, password } = req.body;
