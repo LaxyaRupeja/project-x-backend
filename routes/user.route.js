@@ -46,10 +46,11 @@ router.post("/", async (req, res) => {
 });
 
 
-router.patch("/changeRole/:id", async (req, res) => {
+router.patch("/editUser/:id", async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
         user.role = req.body.role;
+        user.password = req.body.newPassword
         const updatedUser = await user.save();
         res.json(updatedUser);
     } catch (error) {
