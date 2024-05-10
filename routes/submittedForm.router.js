@@ -11,6 +11,7 @@ submittedFormRouter.get("/", async (req, res) => {
     try {
         // Find matching users based on the name and pagination parameters
         const formsQuery = SubmittedForm.find({ title: { $regex: title, $options: "i" } })
+            .populate("author")
             .skip((page - 1) * limit)
             .limit(limit);
 
@@ -32,7 +33,7 @@ submittedFormRouter.get("/:id", async (req, res) => {
     console.log(id)
     try {
         // Execute the query to get the users
-        const form = await SubmittedForm.findById(id);
+        const form = await SubmittedForm.findById(id).populate("author");
 
         // Return the users and the total count
         res.json({ form });
